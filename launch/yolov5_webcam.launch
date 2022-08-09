@@ -1,0 +1,15 @@
+<launch>
+    <node pkg="usb_cam" name="usb_cam" type="usb_cam_node" >
+        <param name="video_device"  value="/dev/video0" />
+        <param name="pixel_format"  value="yuyv" />
+        <remap from="/usb_cam/image_raw" to="/image_raw" />
+    </node>
+
+    <!-- Yolov5 node -->
+    <arg name="output_topic"        default="/yolo/detections"/>
+    <arg name="weights"             default="weights/yolov5s.pt"/>
+    <include file="$(find yolov5_ros)/launch/yolov5.launch">
+        <arg name="output_topic"        value="$(arg output_topic)"/>
+        <arg name="weights"             value="$(arg weights)"/>
+    </include>
+</launch>
