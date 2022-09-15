@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import rospy
 import cv2
 import torch
@@ -216,7 +214,7 @@ class Yolov5Detector:
 
 if __name__ == "__main__":
 
-    check_requirements(exclude=("tensorboard", "thop"))
+    # check_requirements(exclude=("tensorboard", "thop"))
 
     rospy.init_node("yolov5", anonymous=True)
     detector = Yolov5Detector()
